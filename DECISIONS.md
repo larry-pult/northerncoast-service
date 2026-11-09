@@ -69,8 +69,14 @@ default judge uses the same model as the scorer, so shared errors remain
 possible. Future work should use human-reviewed held-out leads, repeated runs,
 and model comparisons before making stronger reliability claims.
 
-GitHub pushing, Vercel deployment, public-URL verification, and the candidate's
-actual time-spent report remain manual delivery steps.
+The candidate subsequently supplied the Vercel production URL. Public HTTP
+verification passed all 13 cases, with scoring round trips of 2.26–4.47 seconds
+(mean 3.19 seconds). Health/OpenAPI returned 200; missing fields and malformed
+JSON returned 422. These checks supplied no authentication. The
+[deployed report](test/eval/deployed-results.json) records the evidence, separately
+from the local judge run. Remote settings and cold-start latency were not
+independently established. The candidate reported **82 minutes (1 hour 22 minutes)**
+for completing Test 1; this is recorded in the README.
 
 References: [OpenAI model](https://developers.openai.com/api/docs/models/gpt-6-luna),
 [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs),

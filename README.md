@@ -1,20 +1,33 @@
 # Northern Coast lead scoring
 
-`POST /api/score` accepts the brief's transcript and returns `lead_id`, `score`,
-`tier`, `routing`, and a short rationale. FastAPI/Pydantic validate both
-boundaries; one OpenAI Responses call produces the assessment using Structured
-Outputs. The application preserves the original lead ID.
+[Live POST endpoint](https://northerncoast-service.vercel.app/api/score) ·
+[API explorer](https://northerncoast-service.vercel.app/docs) ·
+[Source](https://github.com/larry-pult/northerncoast-service)
 
-Default model: **`gpt-6-luna`**, chosen for a bounded, cost-sensitive classification
-task. Model, reasoning effort, and deadline are configurable in `.env`; see
-[`.env.example`](.env.example). The default elapsed-time deadline is ten seconds,
-with no retries. Invalid requests receive 422; unusable/provider responses 502;
-provider throttling 503; deadline expiration 504.
+**Time spent: 82 minutes (1 hour 22 minutes).**
 
-The rubric allocates 35 points to volume, 25 to credibility, 20 to product fit,
-and 20 to readiness. Volume leads because this is container-load wholesale.
-Hot starts at 80, Warm at 40. Licensing remains self-reported evidence. Routing
-selects the next action, allowing actionable Warm leads to reach a KAM.
+`POST /api/score` accepts a conversation transcript and returns its lead ID,
+score, tier, routing, and a 1–2 sentence rationale.
+
+**Approach:** one zero-shot OpenAI Responses call using `gpt-6-luna`, chosen for
+this bounded, cost-sensitive classification task. Structured Outputs and
+Pydantic validate the contract; the application preserves the lead ID.
+
+**Rubric:** volume 35 points, business credibility 25, product fit 20, readiness
+20. Volume leads because Northern Coast sells container loads. Hot starts at
+80; Warm at 40. License claims are soft evidence. Routing selects the next
+action, so an actionable Warm lead can receive a KAM handoff.
+
+**Reliability:** configurable ten-second model deadline, no retries. Invalid
+input returns 422; provider/output failures 502; provider throttling 503;
+deadline expiration 504. Failures never produce fabricated scores.
+
+**Verification:** 46 offline tests pass. All 13 deployed regression cases
+matched expected tiers/routing, taking 2.26–4.47 seconds per request.
+[Cases](test/fixtures/leads.json) and [results](test/eval/deployed-results.json)
+are reviewable; this small set was used during calibration.
+
+Configure `.env` from `.env.example`, then:
 
 ```powershell
 poetry install
@@ -22,10 +35,7 @@ poetry run uvicorn app:app --reload
 poetry run pytest
 ```
 
-Validation: 46 offline tests and 13 live cases passed; final scoring requests
-took 1.77–4.25 seconds locally. [Cases](test/fixtures/leads.json),
-[results](test/eval/results.json), and [evaluation notes](DECISIONS.md) are reviewable.
+With more time: human-labeled held-out evaluation, repeated-run stability,
+deterministic-scoring comparison, authentication, quotas, and monitoring.
 
-With more time: evaluate human-labeled, held-out leads and repeated-run stability;
-compare deterministic signal scoring; add authentication, quotas, and monitoring.
-See [DEPLOY.md](DEPLOY.md) for setup, evaluation commands, and manual Vercel deployment.
+[Deployment instructions](DEPLOY.md) · [Decision history](DECISIONS.md)

@@ -1,0 +1,414 @@
+{
+  "generated_at": "2026-11-09T07:20:06.135139+00:00",
+  "model": "gpt-6-luna",
+  "prompt_sha256": "460ba65b0ec08e7925687e2e3e49df2b1289faa942faae50ce4a3c7e0b7e4f1b",
+  "deadline_seconds": 10.0,
+  "endpoint": "https://northerncoast-service.vercel.app/api/score",
+  "judge_model": null,
+  "label_status": "Proposed expectations; model agreement does not establish business accuracy.",
+  "results": [
+    {
+      "id": "hot_established_importer",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "Recurring container-scale demand, relevant operating history, distribution reach, and an actionable purchasing request.",
+        "reasoning_checks": [
+          "Treat the license as self-reported, not independently verified."
+        ]
+      },
+      "elapsed_seconds": 4.331,
+      "status_code": 200,
+      "actual": {
+        "score": 91,
+        "tier": "Hot",
+        "routing": "kam_handoff",
+        "reasoning": "The lead self-reports seven years of beverage imports, supply to 180 shops, and recurring demand for 3 FCL/month of Monster\u2014strong scale, credibility, and product fit. An active import license and request to discuss pricing for a first shipment next month indicate near-term readiness; these claims remain unverified.",
+        "lead_id": "H001"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "hot_license_unmentioned",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "Strong recurring demand and established operations support a prioritized call despite an unmentioned license.",
+        "reasoning_checks": [
+          "Do not invent a confirmed import license."
+        ]
+      },
+      "elapsed_seconds": 2.567,
+      "status_code": 200,
+      "actual": {
+        "score": 90,
+        "tier": "Hot",
+        "routing": "kam_handoff",
+        "reasoning": "The lead reports six years of soft-drink importing, 90 wholesale customers, and concrete recurring demand for 2\u20133 FCL of Coca-Cola monthly starting next month, indicating strong scale, credibility, product fit, and near-term intent. License or other operational details are unmentioned, but do not outweigh the actionable purchasing request.",
+        "lead_id": "H002"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "hot_multi_turn_confirmation",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "The lead confirms substantial recurring demand and near-term buying intent alongside relevant business history.",
+        "reasoning_checks": [
+          "Use the lead's answers as evidence, rather than treating the agent's questions as confirmations."
+        ]
+      },
+      "elapsed_seconds": 2.491,
+      "status_code": 200,
+      "actual": {
+        "score": 93,
+        "tier": "Hot",
+        "routing": "kam_handoff",
+        "reasoning": "The lead reports ten years of energy-drink distribution across about 300 retail accounts and a concrete demand of 4 FCL per month, strongly supporting recurring container-scale potential and product fit. It also reports an active import license and readiness to review a quote for an order this month; these details are self-reported and should be confirmed during handoff.",
+        "lead_id": "H003"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "warm_pending_license",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "nurture_pool"
+        ],
+        "label_reason": "Relevant container-scale potential, but a stated readiness gap and limited operating history.",
+        "reasoning_checks": [
+          "Do not describe the pending license as active."
+        ]
+      },
+      "elapsed_seconds": 2.994,
+      "status_code": 200,
+      "actual": {
+        "score": 57,
+        "tier": "Warm",
+        "routing": "nurture_pool",
+        "reasoning": "The stated plan for one FCL of Monster monthly suggests meaningful recurring demand and a strong product fit, but it is an aspiration from a business just starting up rather than a demonstrated purchasing track record. The import license application is pending with a six-week decision horizon, so readiness is limited; nurture and qualify as licensing and purchase plans firm up.",
+        "lead_id": "W001"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "warm_actionable_moderate_volume",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "Moderate volume and credible self-reported importing history make a KAM conversation useful, matching the brief's Warm/handoff example.",
+        "reasoning_checks": [
+          "Do not assume Warm must always route to nurture."
+        ]
+      },
+      "elapsed_seconds": 2.719,
+      "status_code": 200,
+      "actual": {
+        "score": 76,
+        "tier": "Warm",
+        "routing": "kam_handoff",
+        "reasoning": "The lead states a recurring 1 FCL/month Monster Energy requirement and asks for a wholesale quote, indicating actionable demand and strong product fit. They also report four years licensed and importing two beverage brands; customer reach and other operating details remain unknown, so the opportunity merits handoff but is not yet Hot.",
+        "lead_id": "W002"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "warm_missing_qualification",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "nurture_pool"
+        ],
+        "label_reason": "Plausible B2B product fit with important qualification details still missing.",
+        "reasoning_checks": [
+          "Do not invent monthly volume or license status.",
+          "Missing information alone is not evidence of consumer-scale demand."
+        ]
+      },
+      "elapsed_seconds": 2.365,
+      "status_code": 200,
+      "actual": {
+        "score": 51,
+        "tier": "Warm",
+        "routing": "nurture_pool",
+        "reasoning": "The wholesale grocery operation and interest in Coca-Cola and Monster indicate plausible B2B product fit, but no quantities, launch date, or recurring container-load demand are established. Business scale and purchasing readiness therefore need qualification; no license or importing history is stated.",
+        "lead_id": "W003"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "cold_personal_purchase",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": [
+          "auto_archive"
+        ],
+        "label_reason": "An explicit personal purchase is a poor fit for container-load wholesale distribution.",
+        "reasoning_checks": [
+          "Brand fit alone should not make this a qualified wholesale lead."
+        ]
+      },
+      "elapsed_seconds": 2.261,
+      "status_code": 200,
+      "actual": {
+        "score": 5,
+        "tier": "Cold",
+        "routing": "auto_archive",
+        "reasoning": "The lead explicitly wants only six cans for home use and says they are not buying for a business, so there is no plausible container-load demand or wholesale fit. No business purchasing readiness is indicated.",
+        "lead_id": "C001"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "cold_one_off_event",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": [
+          "auto_archive"
+        ],
+        "label_reason": "A company buying a small quantity for consumption is still a poor wholesale opportunity.",
+        "reasoning_checks": [
+          "A business email or company identity does not establish wholesale fit."
+        ]
+      },
+      "elapsed_seconds": 2.453,
+      "status_code": 200,
+      "actual": {
+        "score": 8,
+        "tier": "Cold",
+        "routing": "auto_archive",
+        "reasoning": "This is a small, one-time consumer purchase of ten cases for an office event, with no resale or recurring demand\u2014not plausible container-load business. The product category matches, but the lead has no stated wholesale operation or ongoing purchasing intent.",
+        "lead_id": "C002"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "cold_unrelated_product",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": [
+          "auto_archive"
+        ],
+        "label_reason": "A specific commercial request can still be outside Northern Coast's beverage business.",
+        "reasoning_checks": [
+          "Do not confuse order size or business credibility with product fit."
+        ]
+      },
+      "elapsed_seconds": 4.223,
+      "status_code": 200,
+      "actual": {
+        "score": 4,
+        "tier": "Cold",
+        "routing": "auto_archive",
+        "reasoning": "The inquiry is for 20 forklifts from an industrial equipment company and explicitly states there is no beverage purchasing requirement. This is a clear mismatch for Northern Coast\u2019s beverage distribution business.",
+        "lead_id": "C003"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "brief_output_example",
+      "source": "brief_examples.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "The brief supplies this tier/routing pair, with a score of 78.",
+        "reasoning_checks": [
+          "License status is self-reported."
+        ]
+      },
+      "elapsed_seconds": 4.412,
+      "status_code": 200,
+      "actual": {
+        "score": 74,
+        "tier": "Warm",
+        "routing": "kam_handoff",
+        "reasoning": "The lead explicitly seeks wholesale Monster supply at 1 FCL/month, a concrete volume consistent with meaningful recurring demand, and reports four years of import licensing plus two current brands. Near-term purchase timing and distribution/customer reach are not stated, so qualification is still needed; the actionable moderate-volume opportunity merits a KAM handoff.",
+        "lead_id": "L001"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "brief_hot",
+      "source": "brief_examples.json",
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "The brief explicitly names this a Hot example.",
+        "reasoning_checks": [
+          "Do not invent a confirmed import license.",
+          "Use the later 2-3 FCL/month clarification."
+        ]
+      },
+      "elapsed_seconds": 4.47,
+      "status_code": 200,
+      "actual": {
+        "score": 83,
+        "tier": "Hot",
+        "routing": "kam_handoff",
+        "reasoning": "The lead self-reports 2\u20133 sustained FCL/month, eight years importing energy drinks, and distribution to about 250 retail accounts\u2014strong evidence of recurring scale and relevant operations. Red Bull is a direct product fit and the request is specific, though purchase timing and readiness details remain unconfirmed.",
+        "lead_id": "S001"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "brief_cold",
+      "source": "brief_examples.json",
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": [
+          "auto_archive"
+        ],
+        "label_reason": "The brief explicitly names this a Cold example.",
+        "reasoning_checks": [
+          "Recognize consumer-scale consumption despite matching the brand."
+        ]
+      },
+      "elapsed_seconds": 2.584,
+      "status_code": 200,
+      "actual": {
+        "score": 5,
+        "tier": "Cold",
+        "routing": "auto_archive",
+        "reasoning": "The lead requests only a few cans for an office party, indicating a small one-time consumer purchase rather than recurring container-load demand. No wholesale distribution operation or broader commercial beverage need is described.",
+        "lead_id": "S002"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    },
+    {
+      "id": "brief_ambiguous",
+      "source": "brief_examples.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "nurture_pool"
+        ],
+        "label_reason": "Plausible wholesale demand with a pending license and limited operating history.",
+        "reasoning_checks": [
+          "Do not describe the pending license as active."
+        ]
+      },
+      "elapsed_seconds": 3.63,
+      "status_code": 200,
+      "actual": {
+        "score": 52,
+        "tier": "Warm",
+        "routing": "nurture_pool",
+        "reasoning": "The stated 1 FCL/month gives plausible recurring container-scale demand and Coca-Cola is a strong product fit, but the lead is a new entrant with no importing or distribution track record described. The license is still in process with an expected six-week wait, so qualify the operation and follow up as readiness advances.",
+        "lead_id": "S003"
+      },
+      "tier_matches": true,
+      "routing_matches": true
+    }
+  ],
+  "configuration_note": "Model, deadline, and prompt hash describe the local test configuration. Remote configuration was not introspected; responses were verified over public HTTP.",
+  "deployment_checks": {
+    "health": {
+      "url": "https://northerncoast-service.vercel.app/health",
+      "status_code": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "openapi": {
+      "url": "https://northerncoast-service.vercel.app/openapi.json",
+      "status_code": 200,
+      "paths": [
+        "/health",
+        "/api/score"
+      ]
+    },
+    "authentication": "No authentication headers or cookies supplied.",
+    "invalid_requests": [
+      {
+        "case": "missing_fields",
+        "status_code": 422,
+        "body": {
+          "detail": [
+            {
+              "type": "missing",
+              "loc": [
+                "body",
+                "lead_id"
+              ],
+              "msg": "Field required",
+              "input": {}
+            },
+            {
+              "type": "missing",
+              "loc": [
+                "body",
+                "channel"
+              ],
+              "msg": "Field required",
+              "input": {}
+            },
+            {
+              "type": "missing",
+              "loc": [
+                "body",
+                "conversation"
+              ],
+              "msg": "Field required",
+              "input": {}
+            }
+          ]
+        }
+      },
+      {
+        "case": "malformed_json",
+        "status_code": 422,
+        "body": {
+          "detail": [
+            {
+              "type": "json_invalid",
+              "loc": [
+                "body",
+                1
+              ],
+              "msg": "JSON decode error",
+              "input": {},
+              "ctx": {
+                "error": "Expecting property name enclosed in double quotes"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
