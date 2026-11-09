@@ -1,0 +1,20 @@
+[project]
+name = "northern-coast-lead-scoring"
+version = "0.1.0"
+description = "Lead scoring HTTP API for the Northern Coast take-home"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi (>=0.162.2,<0.163.0)",
+    "openai (>=3.46.0,<4.0.0)",
+    "pydantic (>=2.14.3,<3.0.0)",
+    "pydantic-settings (>=2.16.2,<3.0.0)",
+    "uvicorn (>=0.54.0,<0.55.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.2.0"
+pytest-asyncio = "^1.4.1.post1"
+httpx = "^0.28.1"
