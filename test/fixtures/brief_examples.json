@@ -1,0 +1,41 @@
+{
+  "label_status": "Brief examples. The ambiguous case's expected Warm/nurture outcome is our proposed interpretation.",
+  "cases": [
+    {
+      "id": "brief_output_example",
+      "input": {
+        "lead_id": "L001",
+        "channel": "whatsapp",
+        "conversation": [
+          {"role": "lead", "text": "Hi, looking for wholesale Monster Energy supply for Singapore. 1 FCL/month."},
+          {"role": "agent", "text": "Could you confirm your import license and history?"},
+          {"role": "lead", "text": "Yes, licensed 4 years. Currently import 2 brands."}
+        ]
+      },
+      "expected": {"tier": "Warm", "acceptable_routes": ["kam_handoff"], "label_reason": "The brief supplies this tier/routing pair, with a score of 78.", "reasoning_checks": ["License status is self-reported."]}
+    },
+    {
+      "id": "brief_hot",
+      "input": {
+        "lead_id": "S001",
+        "channel": "whatsapp",
+        "conversation": [
+          {"role": "lead", "text": "UAE distributor, 3 FCL/month Red Bull, 8 years importing energy drinks. Looking for original Austrian product."},
+          {"role": "agent", "text": "Volume target on Red Bull specifically?"},
+          {"role": "lead", "text": "2-3 FCL/month sustained. ~250 retail accounts across UAE."}
+        ]
+      },
+      "expected": {"tier": "Hot", "acceptable_routes": ["kam_handoff"], "label_reason": "The brief explicitly names this a Hot example.", "reasoning_checks": ["Do not invent a confirmed import license.", "Use the later 2-3 FCL/month clarification."]}
+    },
+    {
+      "id": "brief_cold",
+      "input": {"lead_id": "S002", "channel": "email", "conversation": [{"role": "lead", "text": "hey can I get a few cans of red bull for my office party"}]},
+      "expected": {"tier": "Cold", "acceptable_routes": ["auto_archive"], "label_reason": "The brief explicitly names this a Cold example.", "reasoning_checks": ["Recognize consumer-scale consumption despite matching the brand."]}
+    },
+    {
+      "id": "brief_ambiguous",
+      "input": {"lead_id": "S003", "channel": "email", "conversation": [{"role": "lead", "text": "Ghana-based distributor looking for Coca-Cola products. New entrant, license in process — expected 6 weeks. Initial volume 1 FCL/month."}]},
+      "expected": {"tier": "Warm", "acceptable_routes": ["nurture_pool"], "label_reason": "Plausible wholesale demand with a pending license and limited operating history.", "reasoning_checks": ["Do not describe the pending license as active."]}
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+{
+  "generated_at": "2026-11-09T07:05:26.641461+00:00",
+  "model": "gpt-6-luna",
+  "prompt_sha256": "460ba65b0ec08e7925687e2e3e49df2b1289faa942faae50ce4a3c7e0b7e4f1b",
+  "deadline_seconds": 10.0,
+  "endpoint": "local ASGI app",
+  "judge_model": "gpt-6-luna",
+  "label_status": "Proposed expectations; model agreement does not establish business accuracy.",
+  "results": [
+    {
+      "id": "hot_established_importer",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "Recurring container-scale demand, relevant operating history, distribution reach, and an actionable purchasing request.",
+        "reasoning_checks": [
+          "Treat the license as self-reported, not independently verified."
+        ]
+      },
+      "elapsed_seconds": 2.839,
+      "status_code": 200,
+      "actual": {
+        "score": 91,
+        "tier": "Hot",
+        "routing": "kam_handoff",
+        "reasoning": "The lead reports seven years importing beverages, supply to 180 shops, active import licensing, and demand for 3 FCL/month\u2014strong evidence of scale and relevant operating capability. They also request pricing for a first shipment next month; these self-reported details merit prompt handoff.",
+        "lead_id": "H001"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s self-reported seven years of beverage importing, 180-shop reach, active import license, recurring 3-FCL monthly demand, and request to discuss pricing for a first shipment next month. Those details support Hot priority and prompt KAM handoff; the rationale appropriately presents the claims as self-reported rather than verified."
+      }
+    },
+    {
+      "id": "hot_license_unmentioned",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "Strong recurring demand and established operations support a prioritized call despite an unmentioned license.",
+        "reasoning_checks": [
+          "Do not invent a confirmed import license."
+        ]
+      },
+      "elapsed_seconds": 2.968,
+      "status_code": 200,
+      "actual": {
+        "score": 89,
+        "tier": "Hot",
+        "routing": "kam_handoff",
+        "reasoning": "The lead reports six years of soft-drink importing, 90 wholesale customers, and a concrete recurring need for 2\u20133 FCL/month of Coca-Cola starting next month, indicating strong scale, credibility, product fit, and near-term intent. License and other purchasing details remain unconfirmed, but do not outweigh the actionable request for a purchasing call.",
+        "lead_id": "H002"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s self-reported importing history, customer reach, recurring Coca-Cola volume, start date, and request for a purchasing call. Hot with kam_handoff is supported by the substantial stated demand and near-term intent; it appropriately notes that license and other purchasing details are unconfirmed without claiming the license is confirmed."
+      }
+    },
+    {
+      "id": "hot_multi_turn_confirmation",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "The lead confirms substantial recurring demand and near-term buying intent alongside relevant business history.",
+        "reasoning_checks": [
+          "Use the lead's answers as evidence, rather than treating the agent's questions as confirmations."
+        ]
+      },
+      "elapsed_seconds": 4.027,
+      "status_code": 200,
+      "actual": {
+        "score": 91,
+        "tier": "Hot",
+        "routing": "kam_handoff",
+        "reasoning": "The lead reports ten years as an energy-drink distributor with 300 retail accounts and seeks a recurring 4 FCL/month of Red Bull, a strong fit for container-scale wholesale. They also self-report an active import license and readiness to review a quote for an order this month; these are self-reported and should be confirmed during handoff.",
+        "lead_id": "H003"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s self-reported ten-year distribution history, 300 retail accounts, recurring 4 FCL/month demand, active import license, and intent to review a quote for an order this month. Those claims support Hot priority and a kam_handoff; the rationale appropriately notes that the self-reported details should be confirmed."
+      }
+    },
+    {
+      "id": "warm_pending_license",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "nurture_pool"
+        ],
+        "label_reason": "Relevant container-scale potential, but a stated readiness gap and limited operating history.",
+        "reasoning_checks": [
+          "Do not describe the pending license as active."
+        ]
+      },
+      "elapsed_seconds": 2.21,
+      "status_code": 200,
+      "actual": {
+        "score": 62,
+        "tier": "Warm",
+        "routing": "nurture_pool",
+        "reasoning": "The stated plan for one monthly FCL of Monster is meaningful, well-matched wholesale demand, but it is an aspiration from a business that is just starting rather than a demonstrated purchasing track record. The import license application is pending with a six-week decision estimate, so follow up with product and ordering information and revisit readiness after the decision.",
+        "lead_id": "W001"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s self-reported plan for one monthly FCL of Monster, the new business, and the pending license with an expected decision in six weeks; it does not present the license as active. Warm/nurture_pool is consistent with a plausible wholesale opportunity that still needs qualification and has a stated readiness gap."
+      }
+    },
+    {
+      "id": "warm_actionable_moderate_volume",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "Moderate volume and credible self-reported importing history make a KAM conversation useful, matching the brief's Warm/handoff example.",
+        "reasoning_checks": [
+          "Do not assume Warm must always route to nurture."
+        ]
+      },
+      "elapsed_seconds": 2.66,
+      "status_code": 200,
+      "actual": {
+        "score": 72,
+        "tier": "Warm",
+        "routing": "kam_handoff",
+        "reasoning": "The lead states a concrete recurring demand of 1 FCL/month for Monster Energy, supported by four years of licensed importing and two existing beverage brands. The wholesale product fit and stated request for a quote are strong; distribution reach and other operational details remain unknown, so this is promising but needs qualification.",
+        "lead_id": "W002"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s self-reported monthly FCL demand, four years of licensed importing, two existing beverage brands, and request for a wholesale quote; it also notes that distribution reach and other operating details are unknown. Warm is compatible with these strong but unverified claims and remaining gaps, and a kam_handoff is a reasonable next step for this actionable moderate-volume opportunity."
+      }
+    },
+    {
+      "id": "warm_missing_qualification",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "nurture_pool"
+        ],
+        "label_reason": "Plausible B2B product fit with important qualification details still missing.",
+        "reasoning_checks": [
+          "Do not invent monthly volume or license status.",
+          "Missing information alone is not evidence of consumer-scale demand."
+        ]
+      },
+      "elapsed_seconds": 4.249,
+      "status_code": 200,
+      "actual": {
+        "score": 48,
+        "tier": "Warm",
+        "routing": "nurture_pool",
+        "reasoning": "The lead operates a wholesale grocery business and is interested in relevant beverage brands, supporting plausible B2B fit, but provides no purchasing history, customer reach, quantities, or launch timing. With demand and readiness still undefined, nurture and qualify rather than prioritize for immediate handoff.",
+        "lead_id": "W003"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s stated wholesale grocery business and interest in Coca-Cola and Monster Energy, while noting that quantities and launch timing are unsettled and no purchasing history or customer reach was provided. Warm with nurture_pool is a reasonable choice for a plausible but underqualified B2B inquiry; the rationale does not invent volume or license status."
+      }
+    },
+    {
+      "id": "cold_personal_purchase",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": [
+          "auto_archive"
+        ],
+        "label_reason": "An explicit personal purchase is a poor fit for container-load wholesale distribution.",
+        "reasoning_checks": [
+          "Brand fit alone should not make this a qualified wholesale lead."
+        ]
+      },
+      "elapsed_seconds": 3.925,
+      "status_code": 200,
+      "actual": {
+        "score": 3,
+        "tier": "Cold",
+        "routing": "auto_archive",
+        "reasoning": "The lead explicitly wants only six cans for personal home use and says they are not buying for a business. This is not plausible recurring container-load or wholesale demand.",
+        "lead_id": "C001"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The lead explicitly asks for six cans for home use and says the purchase is not for a business, supporting the rationale that this is not wholesale or recurring container-load demand. The Cold tier and auto_archive action are consistent with the policy\u2019s clear poor-fit guidance."
+      }
+    },
+    {
+      "id": "cold_one_off_event",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": [
+          "auto_archive"
+        ],
+        "label_reason": "A company buying a small quantity for consumption is still a poor wholesale opportunity.",
+        "reasoning_checks": [
+          "A business email or company identity does not establish wholesale fit."
+        ]
+      },
+      "elapsed_seconds": 3.152,
+      "status_code": 200,
+      "actual": {
+        "score": 9,
+        "tier": "Cold",
+        "routing": "auto_archive",
+        "reasoning": "This is a one-off request for ten cases for an office event, with no resale or ongoing supply, far below Northern Coast\u2019s typical FCL-scale commercial demand. Coca-Cola is a product match, but there is no wholesale business opportunity indicated.",
+        "lead_id": "C002"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s stated one-off request for ten cases, explicitly says there is no resale or ongoing supply, and contrasts this with the distributor\u2019s typical FCL-scale demand. Coca-Cola is a product match, but the stated consumer event does not indicate a wholesale opportunity, supporting the Cold tier and auto_archive action."
+      }
+    },
+    {
+      "id": "cold_unrelated_product",
+      "source": "leads.json",
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": [
+          "auto_archive"
+        ],
+        "label_reason": "A specific commercial request can still be outside Northern Coast's beverage business.",
+        "reasoning_checks": [
+          "Do not confuse order size or business credibility with product fit."
+        ]
+      },
+      "elapsed_seconds": 1.769,
+      "status_code": 200,
+      "actual": {
+        "score": 0,
+        "tier": "Cold",
+        "routing": "auto_archive",
+        "reasoning": "The lead explicitly states it has no beverage purchasing requirement and is seeking forklifts, so there is no relevant commercial scale or product fit for Northern Coast.",
+        "lead_id": "C003"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The lead explicitly says it is seeking forklifts and has no beverage purchasing requirement, supporting the rationale\u2019s conclusion that there is no beverage product fit or relevant commercial demand. Cold with auto_archive is consistent with the policy for a clear poor-fit inquiry."
+      }
+    },
+    {
+      "id": "brief_output_example",
+      "source": "brief_examples.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "The brief supplies this tier/routing pair, with a score of 78.",
+        "reasoning_checks": [
+          "License status is self-reported."
+        ]
+      },
+      "elapsed_seconds": 3.114,
+      "status_code": 200,
+      "actual": {
+        "score": 70,
+        "tier": "Warm",
+        "routing": "kam_handoff",
+        "reasoning": "The lead states a concrete demand of 1 FCL/month for wholesale Monster Energy and reports four years licensed, currently importing two brands\u2014credible signals of relevant scale and fit. Distribution reach, purchasing timing, and other operational details remain unconfirmed, so this is a promising opportunity for qualification rather than a Hot lead.",
+        "lead_id": "L001"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s stated 1 FCL/month wholesale demand and self-reported four years of licensing and current importation of two brands. It appropriately notes missing distribution and timing details; a Warm lead routed to kam_handoff is consistent with an actionable moderate-volume opportunity needing qualification."
+      }
+    },
+    {
+      "id": "brief_hot",
+      "source": "brief_examples.json",
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": [
+          "kam_handoff"
+        ],
+        "label_reason": "The brief explicitly names this a Hot example.",
+        "reasoning_checks": [
+          "Do not invent a confirmed import license.",
+          "Use the later 2-3 FCL/month clarification."
+        ]
+      },
+      "elapsed_seconds": 2.557,
+      "status_code": 200,
+      "actual": {
+        "score": 82,
+        "tier": "Hot",
+        "routing": "kam_handoff",
+        "reasoning": "The lead self-reports sustained demand of 2\u20133 FCL/month, eight years importing energy drinks, and roughly 250 retail accounts\u2014strong commercial scale and relevant distribution experience. Original Austrian Red Bull is a clear product fit; licensing and purchase timing are not stated, so readiness is not fully established.",
+        "lead_id": "S001"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the lead\u2019s self-reported sustained 2\u20133 FCL/month demand, eight years importing energy drinks, and approximately 250 UAE retail accounts, and appropriately notes that licensing and purchase timing are unstated. The Hot tier and kam_handoff are supported by the substantial recurring volume and distribution reach; the rationale does not claim the license is confirmed."
+      }
+    },
+    {
+      "id": "brief_cold",
+      "source": "brief_examples.json",
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": [
+          "auto_archive"
+        ],
+        "label_reason": "The brief explicitly names this a Cold example.",
+        "reasoning_checks": [
+          "Recognize consumer-scale consumption despite matching the brand."
+        ]
+      },
+      "elapsed_seconds": 3.996,
+      "status_code": 200,
+      "actual": {
+        "score": 8,
+        "tier": "Cold",
+        "routing": "auto_archive",
+        "reasoning": "This is a small consumer-style request for a few cans for an office party, not plausible recurring wholesale or container-load demand. No distribution operation, importing history, or broader commercial purchasing intent is stated.",
+        "lead_id": "S002"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The lead asks for only a few cans for an office party, supporting the rationale that this is consumer-scale rather than wholesale demand. No distribution operation, importing history, or broader commercial intent is stated, so Cold and auto_archive are supported."
+      }
+    },
+    {
+      "id": "brief_ambiguous",
+      "source": "brief_examples.json",
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": [
+          "nurture_pool"
+        ],
+        "label_reason": "Plausible wholesale demand with a pending license and limited operating history.",
+        "reasoning_checks": [
+          "Do not describe the pending license as active."
+        ]
+      },
+      "elapsed_seconds": 2.191,
+      "status_code": 200,
+      "actual": {
+        "score": 57,
+        "tier": "Warm",
+        "routing": "nurture_pool",
+        "reasoning": "The stated plan for 1 FCL/month of Coca-Cola products is a plausible wholesale opportunity, though it is an initial-volume estimate from a new entrant with no importing or distribution track record provided. The license is explicitly still in process with an estimated six-week wait, so the lead has a meaningful readiness gap and merits qualification rather than immediate handoff.",
+        "lead_id": "S003"
+      },
+      "tier_matches": true,
+      "routing_matches": true,
+      "judge": {
+        "grounded": true,
+        "coherent": true,
+        "explanation": "The rationale accurately reflects the self-reported plan for one FCL per month, Coca-Cola product interest, new-entrant status, and license application expected to take six weeks. It does not treat the pending license as active; Warm with nurture_pool is consistent with a plausible opportunity that still needs qualification."
+      }
+    }
+  ]
+}
