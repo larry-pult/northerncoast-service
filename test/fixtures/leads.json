@@ -1,0 +1,154 @@
+{
+  "label_status": "Proposed labels for candidate review; not established business ground truth.",
+  "usage": "Send only each case's input to the scorer. Keep expectations outside the model prompt.",
+  "cases": [
+    {
+      "id": "hot_established_importer",
+      "input": {
+        "lead_id": "H001",
+        "channel": "whatsapp",
+        "conversation": [
+          {"role": "lead", "text": "We import beverages into Malaysia and have operated for seven years. We supply 180 shops and need 3 FCL of Monster Energy per month. Our import license is active. Can we discuss pricing for a first shipment next month?"}
+        ]
+      },
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": ["kam_handoff"],
+        "label_reason": "Recurring container-scale demand, relevant operating history, distribution reach, and an actionable purchasing request.",
+        "reasoning_checks": ["Treat the license as self-reported, not independently verified."]
+      }
+    },
+    {
+      "id": "hot_license_unmentioned",
+      "input": {
+        "lead_id": "H002",
+        "channel": "email",
+        "conversation": [
+          {"role": "lead", "text": "Our Singapore distribution company has imported soft drinks for six years and supplies 90 wholesale customers. We are replacing a supplier and need 2-3 FCL of Coca-Cola every month, starting next month. Please arrange a purchasing call."}
+        ]
+      },
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": ["kam_handoff"],
+        "label_reason": "Strong recurring demand and established operations support a prioritized call despite an unmentioned license.",
+        "reasoning_checks": ["Do not invent a confirmed import license."]
+      }
+    },
+    {
+      "id": "hot_multi_turn_confirmation",
+      "input": {
+        "lead_id": "H003",
+        "channel": "whatsapp",
+        "conversation": [
+          {"role": "lead", "text": "We are an energy-drink distributor in the UAE, operating for ten years with about 300 retail accounts. We want a regular Red Bull supplier."},
+          {"role": "agent", "text": "What monthly volume and purchasing timeline are you considering?"},
+          {"role": "lead", "text": "4 FCL per month. We hold an active import license and are ready to review a quote for an order this month."}
+        ]
+      },
+      "expected": {
+        "tier": "Hot",
+        "acceptable_routes": ["kam_handoff"],
+        "label_reason": "The lead confirms substantial recurring demand and near-term buying intent alongside relevant business history.",
+        "reasoning_checks": ["Use the lead's answers as evidence, rather than treating the agent's questions as confirmations."]
+      }
+    },
+    {
+      "id": "warm_pending_license",
+      "input": {
+        "lead_id": "W001",
+        "channel": "email",
+        "conversation": [
+          {"role": "lead", "text": "We are starting a beverage distribution business in Kenya. We plan to purchase 1 FCL of Monster Energy per month. Our import license application is still pending and we expect a decision in six weeks. Please send information while we prepare."}
+        ]
+      },
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": ["nurture_pool"],
+        "label_reason": "Relevant container-scale potential, but a stated readiness gap and limited operating history.",
+        "reasoning_checks": ["Do not describe the pending license as active."]
+      }
+    },
+    {
+      "id": "warm_actionable_moderate_volume",
+      "input": {
+        "lead_id": "W002",
+        "channel": "whatsapp",
+        "conversation": [
+          {"role": "lead", "text": "We are a Singapore importer looking for 1 FCL of Monster Energy per month."},
+          {"role": "agent", "text": "Can you share your importing history and license status?"},
+          {"role": "lead", "text": "We have been licensed for four years and currently import two beverage brands. Please connect us with someone who can provide a wholesale quote."}
+        ]
+      },
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": ["kam_handoff"],
+        "label_reason": "Moderate volume and credible self-reported importing history make a KAM conversation useful, matching the brief's Warm/handoff example.",
+        "reasoning_checks": ["Do not assume Warm must always route to nurture."]
+      }
+    },
+    {
+      "id": "warm_missing_qualification",
+      "input": {
+        "lead_id": "W003",
+        "channel": "email",
+        "conversation": [
+          {"role": "lead", "text": "We run a wholesale grocery business and are exploring adding Coca-Cola and Monster Energy. Could you send your wholesale range? We have not settled quantities or a launch date yet."}
+        ]
+      },
+      "expected": {
+        "tier": "Warm",
+        "acceptable_routes": ["nurture_pool"],
+        "label_reason": "Plausible B2B product fit with important qualification details still missing.",
+        "reasoning_checks": ["Do not invent monthly volume or license status.", "Missing information alone is not evidence of consumer-scale demand."]
+      }
+    },
+    {
+      "id": "cold_personal_purchase",
+      "input": {
+        "lead_id": "C001",
+        "channel": "whatsapp",
+        "conversation": [
+          {"role": "lead", "text": "Can I buy six cans of Red Bull for my home? I am not buying for a business."}
+        ]
+      },
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": ["auto_archive"],
+        "label_reason": "An explicit personal purchase is a poor fit for container-load wholesale distribution.",
+        "reasoning_checks": ["Brand fit alone should not make this a qualified wholesale lead."]
+      }
+    },
+    {
+      "id": "cold_one_off_event",
+      "input": {
+        "lead_id": "C002",
+        "channel": "email",
+        "conversation": [
+          {"role": "lead", "text": "We need ten cases of Coca-Cola for an office celebration next Friday. This is a one-off event; we do not resell drinks or need ongoing supply."}
+        ]
+      },
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": ["auto_archive"],
+        "label_reason": "A company buying a small quantity for consumption is still a poor wholesale opportunity.",
+        "reasoning_checks": ["A business email or company identity does not establish wholesale fit."]
+      }
+    },
+    {
+      "id": "cold_unrelated_product",
+      "input": {
+        "lead_id": "C003",
+        "channel": "whatsapp",
+        "conversation": [
+          {"role": "lead", "text": "Our industrial equipment company wants to purchase 20 forklifts. We are contacting equipment suppliers and have no beverage purchasing requirement."}
+        ]
+      },
+      "expected": {
+        "tier": "Cold",
+        "acceptable_routes": ["auto_archive"],
+        "label_reason": "A specific commercial request can still be outside Northern Coast's beverage business.",
+        "reasoning_checks": ["Do not confuse order size or business credibility with product fit."]
+      }
+    }
+  ]
+}
